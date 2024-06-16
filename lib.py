@@ -52,7 +52,7 @@ class TTTGame:
 
         return True
     
-    # Get position of all empty cells as tuples
+    # Get position of all empty cells as tuples [(i, j)]
     def get_all_moves(self):
         indices = np.where(self.board == 0)
         moves = list(zip(indices[0], indices[1]))
@@ -87,7 +87,8 @@ class TTTGame:
     # Display current status of game
     # player's turn and board
     def display(self):
-        print(f"{self.player_turn} Player's turn")
+        symbol = self.vectorized_mapping(self.player_turn)
+        print(f"Player {self.player_turn}'s turn ({symbol})")
         board = self._get_readable_board()
         for row in board:
             print(*row)
