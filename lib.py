@@ -171,7 +171,7 @@ class TTTHopelessAI(TTTPlayer):
             return beta
     
     def evaluate(self, game: TTTGame, winner):
-        if winner == self.player:
+        if winner == self.player or winner == 3 :
             return np.inf
 
         return 0
@@ -225,9 +225,7 @@ class TTTConfidentAI(TTTPlayer):
             return beta
     
     def evaluate(self, game: TTTGame, winner):
-        if winner == self.player:
-            return np.inf
-        if winner == 3:
+        if winner == self.player or winner == 3 :
             return np.inf
         
         return np.sum(game.board == 3 - self.player)
