@@ -261,11 +261,7 @@ class TTTConfidentAI(TTTPlayer):
     
 
 # This player will play the game randomly
-# Will also play oppnent's move :)
 class TTTRandom(TTTPlayer):
-    def __init__(self, iterations=3):
-        self.iterations = iterations
-
     def get_move(self, game: TTTGame):
         # Select random moves
         moves = game.get_all_moves()
@@ -273,13 +269,3 @@ class TTTRandom(TTTPlayer):
         random = np.random.randint(n)
         move = moves[random]
         return move
-    
-    def play(self, game: TTTGame):
-        for _ in range(self.iterations):
-            game.display()
-            print()
-            move = self.get_move(game)
-            game.move(move)
-
-        game.display()
-        print()

@@ -1,10 +1,10 @@
-from lib import TTTConfidentAI
+from lib import TTTConfidentAI, TTTHuman
 from game import TicTacToe
 
 loop = TicTacToe(
     TTTConfidentAI(1),
-    TTTConfidentAI(2),
-    random_iterations=3
+    TTTHuman(),
+    random_iterations=2
 )
 
 loop.play()

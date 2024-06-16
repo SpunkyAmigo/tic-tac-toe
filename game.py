@@ -1,13 +1,13 @@
-from lib import TTTGame, TTTRandom
+from lib import TTTGame, TTTRandom, TTTHuman
 
 
 class TicTacToe:
     def __init__(self, p1, p2, random_iterations=0):
         self.p1 = p1
         self.p2 = p2
+        self.random_iterations = random_iterations
         self.game = TTTGame()
-        randy = TTTRandom(iterations=random_iterations)
-        randy.play(self.game)
+        self.random = TTTRandom()
 
     def play(self):
         self.__game_loop()
@@ -19,12 +19,17 @@ class TicTacToe:
             self.game.display()
             print()
             
-            move = None
+            player = None
             if self.game.player_turn == 1:
-                move = self.p1.get_move(self.game)
+                player = self.p1
             elif self.game.player_turn == 2:
-                move = self.p2.get_move(self.game)
+                player = self.p2
 
+            if type(player) != TTTHuman and self.random_iterations != 0:
+                self.random_iterations -= 1
+                player = self.random
+
+            move = player.get_move(self.game)
             status = self.game.move(move)
             if status == False:
                 print('Wrong move try again!\n')
