@@ -1,1 +1,9 @@
-Just in case you did not understand. TTT means **T**ic **T**ac **T**oe
+Just in case you did not understand. TTT means **T**ic **T**ac **T**oe.
+
+## How to play?
+
+Change the player or number of random iterations from the `main.py`.
+
+```bash
+python3 main.py
+```
